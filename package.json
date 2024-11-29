@@ -1,8 +1,8 @@
 {
   "name": "vscode-auto-builder",
-  "displayName": "Builder",
+  "displayName": "Auto Builder",
   "description": "VS Code Auto Builder 是一个 Visual Studio Code 插件，旨在简化项目的构建和部署过程。通过简单的命令，你可以快速执行 npm 脚本并部署构建结果到远程服务器。",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "scripts": {
     "watch": "tsc -w"
   },
@@ -12,9 +12,10 @@
     "type": "git",
     "url": "https://github.com/yummyo/autoBuilder-vs-plugin"
   },
-  "publisher": "yummyo",
+  "icon": "image/icon.png",
+  "publisher": "smallhouse",
   "author": {
-    "name": "yummyo",
+    "name": "smallhouse",
     "email": "smartwsg@163.com"
   },
   "engines": {
@@ -32,11 +33,11 @@
     "commands": [
       {
         "command": "auto-builder.build",
-        "title": "Build Package"
+        "title": "项目打包"
       },
       {
         "command": "auto-builder.deploy",
-        "title": "Deploy Package"
+        "title": "部署"
       }
     ],
     "menus": {
@@ -44,12 +45,12 @@
         {
           "command": "auto-builder.build",
           "when": "resourceExtname == ''",
-          "group": "navigation"
+          "group": "auto-builder"
         },
         {
           "command": "auto-builder.deploy",
           "when": "resourceExtname == ''",
-          "group": "navigation"
+          "group": "auto-builder"
         }
       ]
     },
@@ -99,7 +100,7 @@
   },
   "devDependencies": {
     "@types/node": "^16.18.11",
-    "@types/vscode": "^1.95.0",
+    "@types/vscode": "^1.80.0",
     "typescript": "^5.0.0",
     "vscode": "^1.1.37"
   },
