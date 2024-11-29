@@ -1,0 +1,109 @@
+{
+  "name": "vscode-auto-builder",
+  "displayName": "Builder",
+  "description": "VS Code Auto Builder 是一个 Visual Studio Code 插件，旨在简化项目的构建和部署过程。通过简单的命令，你可以快速执行 npm 脚本并部署构建结果到远程服务器。",
+  "version": "1.0.0",
+  "scripts": {
+    "watch": "tsc -w"
+  },
+  "homepage": "https://github.com/yummyo/autoBuilder-vs-plugin",
+  "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yummyo/autoBuilder-vs-plugin"
+  },
+  "publisher": "yummyo",
+  "author": {
+    "name": "yummyo",
+    "email": "smartwsg@163.com"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:auto-builder.build",
+    "onCommand:auto-builder.deploy"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "auto-builder.build",
+        "title": "Build Package"
+      },
+      {
+        "command": "auto-builder.deploy",
+        "title": "Deploy Package"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "auto-builder.build",
+          "when": "resourceExtname == ''",
+          "group": "navigation"
+        },
+        {
+          "command": "auto-builder.deploy",
+          "when": "resourceExtname == ''",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Package Builder Configuration",
+      "properties": {
+        "auto-builder.localBuildPath": {
+          "type": "string",
+          "default": "",
+          "description": "本地打包路径"
+        },
+        "auto-builder.remoteDeployDir": {
+          "type": "string",
+          "default": "",
+          "description": "远程部署目录"
+        },
+        "auto-builder.serverInfo": {
+          "type": "object",
+          "default": {},
+          "description": "要部署的服务器信息",
+          "properties": {
+            "host": {
+              "type": "string",
+              "default": "",
+              "description": "服务器主机地址"
+            },
+            "port": {
+              "type": "number",
+              "default": 22,
+              "description": "服务器端口"
+            },
+            "username": {
+              "type": "string",
+              "default": "",
+              "description": "服务器用户名"
+            },
+            "password": {
+              "type": "string",
+              "default": "",
+              "description": "服务器密码"
+            }
+          }
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^16.18.11",
+    "@types/vscode": "^1.95.0",
+    "typescript": "^5.0.0",
+    "vscode": "^1.1.37"
+  },
+  "dependencies": {
+    "node-ssh": "^13.2.0"
+  }
+}
