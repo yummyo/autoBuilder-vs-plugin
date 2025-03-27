@@ -26,18 +26,23 @@
   ],
   "activationEvents": [
     "onCommand:auto-builder.build",
-    "onCommand:auto-builder.deploy"
+    "onCommand:auto-builder.deploy",
+    "onCommand:auto-builder.showOutput"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "auto-builder.build",
-        "title": "项目打包"
+        "title": "项目打包test"
       },
       {
         "command": "auto-builder.deploy",
-        "title": "部署"
+        "title": "部署test"
+      },
+      {
+        "command": "auto-builder.showOutput",
+        "title": "构建日志"
       }
     ],
     "menus": {
@@ -49,6 +54,11 @@
         },
         {
           "command": "auto-builder.deploy",
+          "when": "resourceExtname == ''",
+          "group": "auto-builder"
+        },
+        {
+          "command": "auto-builder.showOutput",
           "when": "resourceExtname == ''",
           "group": "auto-builder"
         }
